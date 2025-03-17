@@ -33,6 +33,7 @@
 			display: flex;
 			justify-content: flex-end;
 			padding: 20px;
+			margin-left: 200px; /* Account for sidenav */
 		}
 		
 		.navbar a {
@@ -102,16 +103,19 @@
 			opacity: 1;
 		}
 
-		.navbar a.instagram-link {
+		.navbar .instagram-link {
 			display: flex;
 			align-items: center;
-			gap: 5px;
 		}
 
 		.navbar .instagram-icon {
-			width: 35px;  /* Increased from 24px */
-			height: 24px;  /* Increased from 24px */
-			vertical-align: middle;
+			width: 70px;
+			height: 50px;
+			transition: transform 0.3s ease; /* Optional: adds hover effect */
+		}
+
+		.navbar .instagram-icon:hover {
+			transform: scale(1.1); /* Optional: adds hover effect */
 		}
 
 		.sidenav {
@@ -163,10 +167,14 @@
 		<a href="/pages/portraits.html" class="sub-item">Portraits</a>
 		<a href="/pages/thermals.html" class="sub-item">Thermals</a>
 		<a href="/pages/classicos.html" class="sub-item">Classicos</a>
+		<a href="/pages/varleen.html" class="sub-item" style="padding-left: 64px;">varleene</a>
 		<a href="/pages/concerts.html" class="sub-item">Concerts</a>
 		<a href="/pages/bts.html" class="sub-item">BTS</a>
 		<a href="/pages/peopleplacesthings.html" class="sub-item">PEOPLE-PLACES-THINGS</a>
         <a href="/pages/thedate.html" class="sub-item active">The Date</a>
+	</div>
+
+	<div class="navbar">
 		<a href="https://www.instagram.com/chowsifye" target="_blank" class="instagram-link">
 			<img src="Images/insta.png" alt="Instagram" class="instagram-icon">
 		</a>
