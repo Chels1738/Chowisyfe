@@ -1,2 +1,0 @@
-# Chowisyfe
-Photography Porfolio
