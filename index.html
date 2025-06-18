@@ -102,34 +102,50 @@
 		}
 
 		.gallery-item a {
+			position: relative;
 			display: block;
 			width: 100%;
 			height: 100%;
-			position: relative;
-			transition: transform 0.3s ease;
 		}
 
-		.gallery-item a:hover {
-			transform: scale(1.05);
-		}
-
-		.gallery-item a::after {
-			content: "THERMALS";
+		.gallery-item a::before {
+			content: '';
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			background: rgba(252, 0, 0, 0.9);
-			color: white;
-			padding: 10px 20px;
-			font-size: 18px;
-			font-weight: bold;
-			opacity: 0;
-			transition: opacity 0.3s ease;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(60,60,60,0.55); /* grey overlay */
+			z-index: 1;
 			pointer-events: none;
 		}
 
+		.gallery-item a::after {
+			content: attr(data-title);
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			background: rgb(252, 0, 0);
+			color: #fff;
+			padding: 6px 14px;
+			font-size: 0.9rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			border-radius: 6px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+			z-index: 2;
+			pointer-events: none;
+			letter-spacing: 1px;
+			text-align: center;
+			opacity: 1;
+		}
+
+		/* Remove old hover effect */
 		.gallery-item a:hover::after {
+			opacity: 1;
+		}
+		.gallery-item a:hover::before {
 			opacity: 1;
 		}
 
@@ -371,6 +387,12 @@
 				color: rgb(252, 0, 0);
 				text-decoration: underline;
 			}
+			.slideshow-container {
+				display: none !important;
+			}
+			.prev, .next {
+				display: none !important;
+			}
 		}
 
 		@media screen and (max-width: 480px) {
@@ -518,7 +540,7 @@
 			cursor: pointer;
 		}
 
-		/* Black/Grey overlay on hover */
+		/* Black/Grey overlay always visible on active slide */
 		.slideshow-link.active::before {
 			content: '';
 			position: absolute;
@@ -528,15 +550,11 @@
 			height: 100%;
 			background: rgba(0,0,0,0.55);
 			z-index: 10;
-			opacity: 0;
-			transition: opacity 0.3s;
+			opacity: 1;
 			pointer-events: none;
 		}
-		.slideshow-link.active:hover::before {
-			opacity: 1;
-		}
 
-		/* Red rectangle title overlay (already above overlay) */
+		/* Red rectangle title overlay always visible on active slide */
 		.slideshow-link.active::after {
 			content: attr(data-title);
 			position: absolute;
@@ -554,11 +572,13 @@
 			z-index: 20;
 			cursor: pointer;
 			pointer-events: none;
-			opacity: 0;
-			transition: opacity 0.3s;
+			opacity: 1;
 			letter-spacing: 1px;
 			text-align: center;
 		}
+
+		/* Remove hover effect for overlay and title */
+		.slideshow-link.active:hover::before,
 		.slideshow-link.active:hover::after {
 			opacity: 1;
 		}
@@ -593,17 +613,6 @@
 		/* Hide gallery on desktop screens */
 		@media screen and (min-width: 769px) {
 			.gallery {
-				display: none !important;
-			}
-		}
-
-		/* Hide slideshow on mobile screens */
-		@media screen and (max-width: 768px) {
-			.slideshow-container {
-				display: none !important;
-			}
-			
-			.prev, .next {
 				display: none !important;
 			}
 		}
@@ -708,42 +717,34 @@
 
 	<div class="gallery">
 		<div class="gallery-item">
-			<a href="/pages/thermals.html">
-				<img src="Images/feature1.jpg" alt="image 1">
+			<a href="/pages/peopleplacesthings.html" data-title="PEOPLE-PLACES-THINGS">
+				<img src="Images/PPT1.png" alt="image 1">
 			</a>
 		</div>
 		<div class="gallery-item">
-			<img src="Images/feature2.jpg" alt="image 2">
+			<a href="/pages/concerts.html" data-title="CONCERTS">
+				<img src="Images/Concerts.png" alt="image 2">
+			</a>
 		</div>
 		<div class="gallery-item">
-			<img src="Images/feature3.jpg" alt="image 3">
+			<a href="/pages/classicos.html" data-title="CLASSICOS">
+				<img src="Images/Cl1.jpg" alt="image 3">
+			</a>
 		</div>
 		<div class="gallery-item">
-			<img src="Images/feature4.jpg" alt="image 4">
+			<a href="/pages/thedate.html" data-title="THE DATE">
+				<img src="Images/TD1.png" alt="image 4">
+			</a>
 		</div>
 		<div class="gallery-item">
-			<img src="Images/feature5.jpg" alt="image 5">
+			<a href="/pages/bts.html" data-title="BTS">
+				<img src="Images/BTS.png" alt="image 5">
+			</a>
 		</div>
 		<div class="gallery-item">
-			<img src="Images/feature6.jpg" alt="image 6">
-		</div>
-		<div class="gallery-item hide-on-mobile">
-			<img src="Images/feature7.jpg" alt="image 7">
-		</div>
-		<div class="gallery-item hide-on-mobile">
-			<img src="Images/feature8.jpg" alt="image 8">
-		</div>
-		<div class="gallery-item hide-on-mobile">
-			<img src="Images/feature9.JPG" alt="image 9">
-		</div>
-		<div class="gallery-item hide-on-mobile">
-			<img src="Images/feature10.JPG" alt="image 10">
-		</div>
-		<div class="gallery-item hide-on-mobile">
-			<img src="Images/feature11.jpg" alt="image 11">
-		</div>
-		<div class="gallery-item hide-on-mobile">
-			<img src="Images/feature12.jpg" alt="image 12">
+			<a href="/pages/thermals.html" data-title="THERMALS">
+				<img src="Images/BLACKNWHITE4.jpeg" alt="image 6">
+			</a>
 		</div>
 	</div>
 
