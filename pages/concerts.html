@@ -12,88 +12,185 @@
             font-family: Arial, sans-serif;
             color: white;
         }
-        
-    .sidenav {
-        height: 100%;
-        width: 200px;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        overflow-x: hidden;
-        padding-top: 60px;
-    }
 
-    .sidenav .main-item {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: rgb(252, 0, 0);
-        display: block;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
+        /* Pop-up hamburger menu styles */
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
 
-    .sidenav .sub-item {
-        padding: 8px 8px 8px 48px;
-        text-decoration: none;
-        font-size: 18px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
+        .sidenav.active {
+            left: 0; /* Show when active */
+        }
 
-    .sidenav .sub-item:hover {
-        color: rgb(252, 0, 0);
-    }
+        /* Overlay for pop-up menu */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
 
-    /* Adjust main content to make room for sidenav */
-    .navbar, .gallery, .content {
-        margin-left: 200px;
-    }
-        
-     .content {
-        padding: 50px;
-         text-align: center;
-     }
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-    .photo-grid {
-        column-count: 3;
-        column-gap: 15px;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 20px auto 20px 220px; /* Adjusted margin to account for sidenav */
-    }
+        /* Hamburger menu styles */
+        .hamburger {
+            display: block;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+        }
 
-    .photo-item {
-        break-inside: avoid;
-        margin-bottom: 15px;
-    }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background: rgb(252, 0, 0);
+            transition: 0.3s;
+        }
 
-    .photo-item img {
-        width: 100%;
-        display: block;
-    }
+        /* Hamburger menu for sidenav */
+        .sidenav .hamburger-menu {
+            display: none; /* Hide the one inside sidenav */
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px 8px 8px 32px;
+            cursor: pointer;
+        }
+
+        .sidenav .hamburger-menu span {
+            width: 30px;
+            height: 4px;
+            background-color: rgb(252, 0, 0);
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* Close button for pop-up menu */
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: rgb(252, 0, 0);
+            font-size: 30px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .sidenav .sub-item {
+            padding: 12px 8px 12px 48px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidenav .sub-item:hover {
+            color: rgb(252, 0, 0);
+            background-color: rgba(252, 0, 0, 0.1);
+        }
+
+        .sidenav .sub-item.active {
+            color: rgb(252, 0, 0);
+            background-color: rgba(252, 0, 0, 0.1);
+        }
+
+        /* Content Styles */
+        .content {
+            margin-left: 0;
+            padding: 50px;
+            transition: 0.3s;
+        }
+
+        /* Photo grid styles */
+        .photo-grid {
+            column-count: 3;
+            column-gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .photo-item {
+            break-inside: avoid;
+            margin-bottom: 15px;
+        }
+
+        .photo-item img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Mobile styles */
+        @media screen and (max-width: 768px) {
+            .photo-grid {
+                column-count: 2;
+                margin: 20px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .photo-grid {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="sidenav">
-		<a href="#" class="main-item">Projects</a>
-		<a href="../index.html" class="sub-item">Home</a>
-		<a href="/pages/portraits.html" class="sub-item">Portraits</a>
-		<a href="/pages/classicos.html" class="sub-item">Classicos</a>
-		<a href="/pages/varleen.html" class="sub-item" style="padding-left: 64px;">varleene</a>
-		<a href="/pages/thedate.html" class="sub-item active">The Date</a>
-		<a href="/pages/thermals.html" class="sub-item">Thermals</a>
-		<a href="/pages/peopleplacesthings.html" class="sub-item">PEOPLE-PLACES-THINGS</a>
-		<a href="/pages/concerts.html" class="sub-item">Concerts</a>
-		<a href="/pages/bts.html" class="sub-item">BTS</a>
-	</div>
-    
-    
+    <!-- Visible hamburger button -->
+    <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Menu overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Pop-up hamburger menu -->
+    <div class="sidenav" id="sidenav">
+        <button class="close-menu">&times;</button>
+        <a href="../index.html" class="sub-item">Home</a>
+        <a href="/pages/portraits.html" class="sub-item">Portraits</a>
+        <a href="/pages/classicos.html" class="sub-item">Classicos</a>
+        <a href="/pages/varleen.html" class="sub-item" style="padding-left: 64px;">varleene</a>
+        <a href="/pages/thedate.html" class="sub-item">The Date</a>
+        <a href="/pages/thermals.html" class="sub-item">Thermals</a>
+        <a href="/pages/peopleplacesthings.html" class="sub-item">PEOPLE-PLACES-THINGS</a>
+        <a href="/pages/concerts.html" class="sub-item active">Concerts</a>
+        <a href="/pages/bts.html" class="sub-item">BTS</a>
+    </div>
+
     <div class="content">
-        <h1>Film Photography</h1>
+        <h1>Concerts</h1>
         <div class="photo-grid">
             <div class="photo-item">
                 <img src="../Images/c1.jpg" alt="Film photo 1">
@@ -160,5 +257,81 @@
             </div>
         </div>
     </div>
+
+    <script>
+    // Wait for the page to load completely
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, setting up menu functionality');
+        
+        // Get the elements
+        const hamburger = document.querySelector('.hamburger');
+        const sidenav = document.getElementById('sidenav');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        console.log('Hamburger button:', hamburger);
+        console.log('Sidenav:', sidenav);
+        console.log('Overlay:', overlay);
+        
+        // Add click event to hamburger button
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                console.log('Hamburger clicked!');
+                toggleMenu();
+            });
+        }
+        
+        // Add click event to overlay
+        if (overlay) {
+            overlay.addEventListener('click', function() {
+                console.log('Overlay clicked!');
+                closeMenu();
+            });
+        }
+        
+        // Add click event to close button
+        const closeBtn = document.querySelector('.close-menu');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                console.log('Close button clicked!');
+                closeMenu();
+            });
+        }
+    });
+    
+    function toggleMenu() {
+        console.log('toggleMenu function called');
+        const sidenav = document.getElementById('sidenav');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        if (sidenav && overlay) {
+            console.log('Toggling menu...');
+            sidenav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            console.log('Menu toggled. Sidenav classes:', sidenav.className);
+            console.log('Menu toggled. Overlay classes:', overlay.className);
+        } else {
+            console.log('ERROR: Menu elements not found!');
+        }
+    }
+
+    function closeMenu() {
+        console.log('closeMenu function called');
+        const sidenav = document.getElementById('sidenav');
+        const overlay = document.querySelector('.menu-overlay');
+        
+        if (sidenav && overlay) {
+            sidenav.classList.remove('active');
+            overlay.classList.remove('active');
+            console.log('Menu closed');
+        }
+    }
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMenu();
+        }
+    });
+    </script>
 </body>
 </html>
