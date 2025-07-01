@@ -178,16 +178,20 @@
             width: 100vw;
             overflow-x: auto;
             margin: 0 auto 24px auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
         }
+
         .land-progress-bar {
             width: 100vw;
-            height: 6px;
-            background: rgb(252, 0, 0);
-            border-radius: 3px;
-            margin: 0 auto 24px auto;
+            height: 8px;
+            background: #222;
+            border-radius: 4px;
+            margin: 18px auto 32px auto;
             overflow: hidden;
             position: relative;
         }
+
         .land-progress-bar-fill {
             height: 100%;
             background: rgb(252, 0, 0);
@@ -200,6 +204,26 @@
                 text-align: center;
                 margin-left: 0;
             }
+        }
+
+        @media (min-width: 769px) {
+            .photo-item img {
+                max-width: 600px;
+                height: 520px;
+            }
+        }
+
+        .land-solid-red-bar {
+            width: 100vw;
+            height: 18px;
+            background: rgb(252, 0, 0);
+            margin: 0 auto 36px auto;
+            border-radius: 0;
+        }
+
+        h1 {
+            text-align: left;
+            margin-left: 20px;
         }
     </style>
 </head>
@@ -253,10 +277,9 @@
                     <img src="../Images/l8.png" alt="Film photo 8">
                 </div>
             </div>
-            <div class="land-progress-bar">
-                <div class="land-progress-bar-fill"></div>
-            </div>
+            <div class="land-dashes"></div>
         </div>
+        <div class="land-solid-red-bar"></div>
     </div>
 
     <script>
