@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermals - Chowislyfe</title>
+    <title>LAND</title>
     <style>
         body {
             margin: 0;
@@ -129,54 +129,76 @@
             padding: 50px;
             transition: 0.3s;
             text-align: center;
+            max-width: 1200px;
+            margin-right: auto;
         }
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0px;
-            padding: 10px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .photo-item {
-            width: 100%;
-            line-height: 0;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(320px, 1fr);
+            gap: 40px;
+            justify-content: start;
+            align-items: center;
+            max-width: 100vw;
+            margin: 40px auto;
+            padding: 20px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: thin;
         }
 
         .photo-item img {
             width: 100%;
-            height: 100%;
+            max-width: 480px;
+            height: 420px;
             object-fit: cover;
             display: block;
-            margin: 0;
-            padding: 0;
-        }
-
-        .photo-item.large {
-            grid-column: span 2;
-        }
-
-        .photo-item.tall {
-            aspect-ratio: 9/16;
-        }
-
-        .photo-item.square {
-            aspect-ratio: 1/1;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.25);
         }
 
         /* Mobile styles */
         @media screen and (max-width: 768px) {
             .photo-grid {
-                grid-template-columns: repeat(2, 1fr);
+                column-count: 2;
                 margin: 20px;
             }
         }
 
         @media screen and (max-width: 480px) {
             .photo-grid {
-                grid-template-columns: 1fr;
+                column-count: 1;
+            }
+        }
+
+        /* Add to CSS */
+        .photo-grid-wrapper {
+            position: relative;
+            width: 100vw;
+            overflow-x: auto;
+            margin: 0 auto 24px auto;
+        }
+        .land-progress-bar {
+            width: 100vw;
+            height: 6px;
+            background: rgb(252, 0, 0);
+            border-radius: 3px;
+            margin: 0 auto 24px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .land-progress-bar-fill {
+            height: 100%;
+            background: rgb(252, 0, 0);
+            width: 0%;
+            transition: width 0.2s;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                text-align: center;
+                margin-left: 0;
             }
         }
     </style>
@@ -196,102 +218,43 @@
     <div class="sidenav" id="sidenav">
         <button class="close-menu">&times;</button>
         <a href="../index.html" class="sub-item">Home</a>
-        <a href="/pages/portraits.html" class="sub-item">Portraits</a>
-        <a href="/pages/classicos.html" class="sub-item">Classicos</a>
-        <a href="/pages/varleen.html" class="sub-item" style="padding-left: 64px;">varleene</a>
-        <a href="/pages/thedate.html" class="sub-item">The Date</a>
-        <a href="/pages/thermals.html" class="sub-item active">Thermals</a>
-        <a href="/pages/peopleplacesthings.html" class="sub-item">PEOPLE-PLACES-THINGS</a>
-        <a href="/pages/concerts.html" class="sub-item">Concerts</a>
-        <a href="/pages/bts.html" class="sub-item">BTS</a>
+        <a href="/pages/peopleplacesthings.html" class="sub-item">PEOPLE, PLACES, THINGS</a>
+        <a href="/pages/classicos.html" class="sub-item">CLASSICOS</a>
+        <a href="/pages/lAND.html" class="sub-item active">LAND</a>
+        <a href="/pages/concerts.html" class="sub-item">CONCERTS</a>
     </div>
-
+    
     <div class="content">
-        <h1>Thermals</h1>
-        <div class="photo-grid">
-            <div class="photo-item tall">
-                <img src="../Images/therm1.jpg" alt="Photo 1">
+        <h1>LAND</h1>
+        <div class="photo-grid-wrapper">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="../Images/l1.png" alt="Film photo 1">
+                </div>
+                <div class="photo-item">
+                    <img src="../Images/l2.png" alt="Film photo 2">
+                </div>
+                <div class="photo-item">
+                    <img src="../Images/l3.png" alt="Film photo 3">
+                </div>
+                <div class="photo-item">
+                    <img src="../Images/l4.png" alt="Film photo 4">
+                </div>
+                <div class="photo-item">
+                    <img src="../Images/l5.png" alt="Film photo 5">
+                </div>
+                <div class="photo-item">
+                    <img src="../Images/l6.png" alt="Film photo 6">
+                </div>
+                <div class="photo-item">
+                    <img src="../Images/l7.png" alt="Film photo 7">
+                </div>
+                <div class="photo-item">
+                    <img src="../Images/l8.png" alt="Film photo 8">
+                </div>
             </div>
-            <div class="photo-item">
-                <img src="../Images/therm2.jpg" alt="Photo 2">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm3.jpg" alt="Photo 3">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm4.jpg" alt="Photo 4">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm5.jpg" alt="Photo 5">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm6.jpg" alt="Photo 6">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm7.jpg" alt="Photo 7">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm8.jpg" alt="Photo 8">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm9.jpg" alt="Photo 9">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm10.jpg" alt="Photo 10">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm11.jpg" alt="Photo 11">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm12.jpg" alt="Photo 12">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm13.jpg" alt="Photo 13">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm14.jpg" alt="Photo 14">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm15.jpg" alt="Photo 15">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm16.jpg" alt="Photo 16">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm17.jpg" alt="Photo 17">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm18.jpg" alt="Photo 18">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm19.jpg" alt="Photo 19">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm20.jpg" alt="Photo 20">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm21.jpg" alt="Photo 21">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm22.jpg" alt="Photo 22">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm23.jpg" alt="Photo 23">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm24.jpg" alt="Photo 24">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm25.jpg" alt="Photo 25">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm26.jpg" alt="Photo 26">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm27.jpg" alt="Photo 27">
-            </div>
-            <div class="photo-item">
-                <img src="../Images/therm28.jpg" alt="Photo 28">
+            <div class="land-progress-bar">
+                <div class="land-progress-bar-fill"></div>
             </div>
         </div>
     </div>
@@ -333,6 +296,20 @@
                 console.log('Close button clicked!');
                 closeMenu();
             });
+        }
+
+        const wrapper = document.querySelector('.photo-grid-wrapper');
+        const barFill = document.querySelector('.land-progress-bar-fill');
+        if (wrapper && barFill) {
+            wrapper.addEventListener('scroll', function() {
+                const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+                const percent = maxScroll > 0 ? (wrapper.scrollLeft / maxScroll) * 100 : 0;
+                barFill.style.width = percent + '%';
+            });
+            // Set initial width
+            const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+            const percent = maxScroll > 0 ? (wrapper.scrollLeft / maxScroll) * 100 : 0;
+            barFill.style.width = percent + '%';
         }
     });
     
